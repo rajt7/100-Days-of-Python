@@ -1,6 +1,7 @@
+import os
 import requests
 
-api_key = "60dd988978eeef4171304e5dd06813a6"
+api_key = os.environ["OWN_API_KEY"]
 
 weather_params = {
     'lat': 21.170240,
