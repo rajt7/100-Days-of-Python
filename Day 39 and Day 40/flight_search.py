@@ -21,31 +21,10 @@ class FlightSearch:
         code = response.json()['locations'][0]['code']
         return code
 
-    # def get_flight(self, iata_code):
-    #     flight_params = {
-    #         "fly_from": "LON",
-    #         "fly_to": iata_code,
-    #         "date_from": "10/06/2023",
-    #         "date_to": "10/12/2023",
-    #         "curr": "GBP",
-    #         "limit": 1
-    #     }
-    #
-    #     response = requests.get(url=f"{TEQUILA_ENDPOINT}/v2/search",
-    #                             headers=TEQUILA_HEADERS,
-    #                             params=flight_params)
-    #
-    #     flights = response.json()['data']
-    #
-    #     for flight in flights:
-    #         destination_city = flight['cityTo']
-    #         destination_price = flight['price']
-    #         print(f"{destination_city}: £ {destination_price}")
-
     def check_flights(self, origin_city_code, destination_city_code, date_from, date_to):
         """ The function will check the flights from origin city to destination city from
             tomorrow to next six months and will return the flight details which is having the
-             cheapest price. """
+            cheapest price. """
 
         query = {
             "fly_from": origin_city_code,

@@ -25,4 +25,5 @@ class NotificationManager:
                 to=TWILIO_VERIFIED_NUMBER
             )
 
-        print(message.sid)
+    def send_emails(self):
+        pass
