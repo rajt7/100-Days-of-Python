@@ -1,4 +1,5 @@
 import os
+import smtplib
 from twilio.rest import Client
 
 # Twilio API credentials
@@ -25,5 +26,18 @@ class NotificationManager:
                 to=TWILIO_VERIFIED_NUMBER
             )
 
-    def send_emails(self):
-        pass
+    def send_emails(self, receiver_mails, price, origin_city, origin_airport, destination_city,
+                    destination_airport, out_date, return_date):
+        sender = 'raj.mangukiya7070@gmail.com'
+        receivers = receiver_mails
+
+        message = f"Low price alert! Only £{price} to fly from {origin_city}-" \
+                  f"{origin_airport} to {destination_city}-{destination_airport}," \
+                  f"from {out_date} to {return_date}." \
+
+        try:
+            smp_obj = smtplib.SMTP('localhost')
+            smp_obj.sendmail(from_addr=sender, to_addrs=receivers, msg=message)
+        except smtplib.SMTPException:
+            print("Error: unable to send mail")
+

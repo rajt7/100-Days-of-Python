@@ -67,7 +67,11 @@ for destination in sheet_data:
                                           destination_airport=flight.destination_airport,
                                           out_date=flight.out_date, return_date=flight.return_date)
 
-        # for row in user_data:
-        #
-        # notification_manager.send_emails()
+        receiver_mails = [record['email'] for record in user_data]
+        notification_manager.send_emails(price=flight.price, origin_city=flight.origin_city,
+                                         origin_airport=flight.origin_airport,
+                                         destination_city=flight.destination_city,
+                                         destination_airport=flight.destination_airport,
+                                         out_date=flight.out_date, return_date=flight.return_date,
+                                         receiver_mails=receiver_mails)
 
